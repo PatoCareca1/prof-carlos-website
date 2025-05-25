@@ -1,9 +1,10 @@
-// src/pages/Home.tsx
-export default function Home() {
+export default function ExtensaoEnsinoIA() {
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold mb-4">Bem-vindo ao site do Professor Carlos André</h1>
-      <p>Esta é a página inicial.</p>
+    <main className="container mx-auto px-4 py-8 text-gray-900 bg-gray-50 min-h-screen">
+      <h1 className="text-2xl font-bold mb-4">Extensão, Ensino & Inteligência Artificial</h1>
+      <p>
+        Confira projetos de extensão, internos, de ensino e conteúdos de inteligência artificial, incluindo vídeos do YouTube.
+      </p>
     </main>
   );
 }
