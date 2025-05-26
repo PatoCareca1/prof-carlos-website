@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import BlogPesquisa from './pages/BlogPesquisa';
 import MateriaisDidaticos from './pages/MateriaisDidaticos';
@@ -10,12 +11,12 @@ import SobreProfessor from './pages/SobreProfessor';
 import FAQ from './pages/FAQ';
 import ExtensaoEnsinoIA from './pages/ExtensaoEnsinoIA';
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="min-h-screen w-full bg-gray-50 flex flex-col">
+      <div className="flex flex-col min-h-screen bg-gray-50">
         <Navbar />
-        <div className="flex-1">
+        <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<BlogPesquisa />} />
@@ -27,10 +28,9 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/extensao-ensino-ia" element={<ExtensaoEnsinoIA />} />
           </Routes>
-        </div>
+        </main>
+        <Footer />
       </div>
     </Router>
   );
 }
-
-export default App;
