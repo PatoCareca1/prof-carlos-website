@@ -1,3 +1,4 @@
+/* src/components/Navbar.tsx */
 import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
@@ -46,7 +47,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          {/* Mobile menu (toggle) - placeholder para futura implementação */}
         </nav>
       </div>
     </header>

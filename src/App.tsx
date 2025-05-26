@@ -14,7 +14,7 @@ import ExtensaoEnsinoIA from './pages/ExtensaoEnsinoIA';
 export default function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-gray-50">
+      <div className="flex flex-col min-h-screen bg-gradient-to-b from-teal-200 to-teal-50">
         <Navbar />
         <main className="flex-1">
           <Routes>

@@ -11,7 +11,7 @@
 
 body {
   /* Fundo global igual ao das páginas */
-  @apply bg-gray-50 text-gray-900 antialiased;
+  background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 100%);
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
