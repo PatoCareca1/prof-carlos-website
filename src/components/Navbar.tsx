@@ -16,7 +16,7 @@ export default function Navbar() {
   const location = useLocation();
 
   return (
-    <header className="bg-white shadow">
+    <header className="bg-gray-100 border-b border-gray-200 shadow-sm">
       <div className="container mx-auto max-w-screen-xl px-4 py-4 flex items-center justify-between">
         {/* Logo e título */}
         <Link to="/" className="flex items-center">
