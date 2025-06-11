@@ -1,54 +1,67 @@
-# React + TypeScript + Vite
+# Website Acadêmico - Prof. Carlos André
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório para o website acadêmico do Professor Carlos André, desenvolvido com tecnologias web modernas para criar uma plataforma rica em informações e interativa.
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O projeto foi construído com as seguintes tecnologias no front-end:
 
-## Expanding the ESLint configuration
+- **[React](https://react.dev/)** - Uma biblioteca JavaScript para construir interfaces de usuário.
+- **[Vite](https://vitejs.dev/)** - Uma ferramenta de build moderna que oferece uma experiência de desenvolvimento extremamente rápida.
+- **[TypeScript](https://www.typescriptlang.org/)** - Um superset do JavaScript que adiciona tipagem estática.
+- **[Tailwind CSS](https://tailwindcss.com/)** - Um framework CSS utility-first para criar designs customizados rapidamente.
+- **[React Router](https://reactrouter.com/)** - Para roteamento e navegação declarativa no lado do cliente.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Como Começar (Getting Started)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Siga os passos abaixo para configurar o ambiente de desenvolvimento localmente.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Pré-requisitos
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Antes de começar, garanta que você tenha os seguintes softwares instalados na sua máquina:
+
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- [Yarn](https://yarnpkg.com/) (gerenciador de pacotes)
+
+### Instalação
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/PatoCareca1/prof-carlos-website.git](https://github.com/PatoCareca1/prof-carlos-website.git)
+    ```
+2.  **Navegue até a pasta do projeto:**
+    ```bash
+    cd prof-carlos-website
+    ```
+
+3.  **Instale as dependências com Yarn:**
+    ```bash
+    yarn install
+    ```
+    *(Este comando lerá o arquivo `package.json` e instalará todos os pacotes necessários.)*
+
+---
+
+## Scripts Disponíveis
+
+No diretório do projeto, você pode rodar os seguintes comandos com o Yarn:
+
+### `yarn dev`
+
+Roda o aplicativo em modo de desenvolvimento com Fast Refresh.
+Abra [http://localhost:5173](http://localhost:5173) (ou a porta indicada no seu terminal) para visualizá-lo no navegador. A página irá recarregar automaticamente se você fizer edições no código.
+
+### `yarn build`
+
+Compila e otimiza o aplicativo para produção na pasta `dist`.
+Este comando agrupa o React corretamente e otimiza o build para a melhor performance.
+
+### `yarn lint`
+
+Executa o ESLint para analisar o código em busca de problemas e garantir a consistência do estilo de código.
+
+### `yarn preview`
+
+Inicia um servidor local estático para pré-visualizar o build de produção que foi gerado na pasta `dist`. É uma ótima maneira de verificar o resultado final antes de fazer o deploy.
