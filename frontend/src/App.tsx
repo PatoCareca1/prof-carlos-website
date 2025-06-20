@@ -6,6 +6,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import BlogPesquisa from './pages/BlogPesquisa';
+import PostDetail from './pages/PostDetail';
 import MateriaisDidaticos from './pages/MateriaisDidaticos';
 import ProjetosPesquisa from './pages/ProjetosPesquisa';
 import PortfolioAlunos from './pages/PortfolioAlunos';
@@ -24,7 +25,8 @@ export default function App() {
 
 function PageLayout() {
   const location = useLocation();
-  const hideLayout = ['/', '/login', '/register'].includes(location.pathname);
+  const hideLayout = ['/', '/login', '/register'].includes(location.pathname) ||
+    location.pathname.startsWith('/blog/');
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-teal-200 to-teal-50">
@@ -34,6 +36,7 @@ function PageLayout() {
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/blog" element={<BlogPesquisa />} />
+          <Route path="/blog/:postId" element={<PostDetail />} />
           <Route path="/materiais" element={<MateriaisDidaticos />} />
           <Route path="/projetos" element={<ProjetosPesquisa />} />
           <Route path="/portfolio" element={<PortfolioAlunos />} />
