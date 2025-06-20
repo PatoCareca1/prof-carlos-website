@@ -11,6 +11,8 @@ const navItems = [
   { label: 'Mapa de Estudos', to: '/mapa-estudos' },
   { label: 'Extensão/Ensino/IA', to: '/extensao-ensino-ia' },
   { label: 'FAQ', to: '/faq' },
+  { label: 'Login', to: '/login' },
+  { label: 'Registro', to: '/register' },
 ];
 
 export default function Navbar() {
