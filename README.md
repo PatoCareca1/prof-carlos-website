@@ -41,6 +41,12 @@ This repository hosts a Django backend and a React frontend for the website.
    python backend/manage.py runserver
    ```
 
+6. **Run the tests**
+
+   ```bash
+   python backend/manage.py test
+   ```
+
 ## Frontend Setup (optional)
 
 The `frontend` directory contains a Vite + React project. To start it:
