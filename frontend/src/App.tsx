@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import BlogPesquisa from './pages/BlogPesquisa';
 import MateriaisDidaticos from './pages/MateriaisDidaticos';
 import ProjetosPesquisa from './pages/ProjetosPesquisa';
@@ -18,7 +21,8 @@ export default function App() {
         <Navbar />
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/blog" element={<BlogPesquisa />} />
             <Route path="/materiais" element={<MateriaisDidaticos />} />
             <Route path="/projetos" element={<ProjetosPesquisa />} />
@@ -27,6 +31,8 @@ export default function App() {
             <Route path="/sobre" element={<SobreProfessor />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/extensao-ensino-ia" element={<ExtensaoEnsinoIA />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
         <Footer />
