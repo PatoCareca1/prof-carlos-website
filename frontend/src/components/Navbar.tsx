@@ -1,5 +1,6 @@
 /* src/components/Navbar.tsx */
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -11,12 +12,11 @@ const navItems = [
   { label: 'Mapa de Estudos', to: '/mapa-estudos' },
   { label: 'Extensão/Ensino/IA', to: '/extensao-ensino-ia' },
   { label: 'FAQ', to: '/faq' },
-  { label: 'Login', to: '/login' },
-  { label: 'Registro', to: '/register' },
 ];
 
 export default function Navbar() {
   const location = useLocation();
+  const { user } = useAuth();
 
   return (
     <header className="bg-gray-100 border-b border-gray-200 shadow-sm">
@@ -34,7 +34,7 @@ export default function Navbar() {
         </Link>
 
         {/* Navegação principal */}
-        <nav>
+        <nav className="flex items-center space-x-6">
           <ul className="hidden md:flex space-x-6">
             {navItems.map(item => (
               <li key={item.to}>
@@ -49,6 +49,12 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <Link
+            to="/login"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            {user ? user.name : 'Login'}
+          </Link>
         </nav>
       </div>
     </header>
