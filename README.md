@@ -17,17 +17,17 @@ This repository hosts a Django backend and a React frontend for the website.
    pip install -r backend/requirements.txt
    ```
 
-3. **Configure the database**
+3. **Configure environment variables**
 
-   Update the settings in `backend/core/settings.py` under the `DATABASES` section
-   to match your PostgreSQL credentials. The default configuration expects a local
-   PostgreSQL server with the following values:
+   The backend reads configuration from environment variables. You can create a
+   `.env` file (see `.env.example`) or export the variables in your shell:
 
-   - NAME: `carlos-website`
-   - USER: `carlos`
-   - PASSWORD: `website`
-   - HOST: `localhost`
-   - PORT: `5432`
+   - `DJANGO_SECRET_KEY` – secret key used by Django
+   - `DB_NAME` – database name (default: `carlos-website`)
+   - `DB_USER` – database user (default: `carlos`)
+   - `DB_PASSWORD` – database password (default: `website`)
+   - `DB_HOST` – database host (default: `localhost`)
+   - `DB_PORT` – database port (default: `5432`)
 
 4. **Apply migrations**
 
