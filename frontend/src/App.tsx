@@ -1,12 +1,19 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Landing from './pages/Landing';
-import Login from './pages/Login';
-import Register from './pages/Register';
+// src/App.tsx
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useState } from 'react';
+
+// Contexto
+import { AuthProvider } from './context/AuthContext';
+
+// Componentes
+import Navbar from "./components/Navbar";
+import LoginModal from './components/LoginModal';
+import RegisterModal from './components/RegisterModal'; // Importar RegisterModal
+
+// Páginas (lembre-se de importar todas as suas)
+import LandingPage from './pages/LandingPage';
+import HomePage from './pages/HomePage';
 import BlogPesquisa from './pages/BlogPesquisa';
-import PostDetail from './pages/PostDetail';
 import MateriaisDidaticos from './pages/MateriaisDidaticos';
 import ProjetosPesquisa from './pages/ProjetosPesquisa';
 import PortfolioAlunos from './pages/PortfolioAlunos';
@@ -15,28 +22,25 @@ import SobreProfessor from './pages/SobreProfessor';
 import FAQ from './pages/FAQ';
 import ExtensaoEnsinoIA from './pages/ExtensaoEnsinoIA';
 
-export default function App() {
-  return (
-    <Router>
-      <PageLayout />
-    </Router>
-  );
-}
 
-function PageLayout() {
+// Componente interno para gerenciar o layout e o estado dos modais
+function AppLayout() {
   const location = useLocation();
-  const hideLayout = ['/', '/login', '/register'].includes(location.pathname) ||
-    location.pathname.startsWith('/blog/');
+  // O estado agora pode ser 'login', 'register', ou 'none'
+  const [modal, setModal] = useState<'login' | 'register' | 'none'>('none');
+
+  const showNavbar = location.pathname !== '/';
+
+  const handleCloseModal = () => setModal('none');
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-teal-200 to-teal-50">
-      {!hideLayout && <Navbar />}
-      <main className="flex-1">
+    <div className="min-h-screen w-full bg-gray-50 flex flex-col">
+      {showNavbar && <Navbar onLoginClick={() => setModal('login')} />}
+      <div className="flex-1">
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/blog" element={<BlogPesquisa />} />
-          <Route path="/blog/:postId" element={<PostDetail />} />
           <Route path="/materiais" element={<MateriaisDidaticos />} />
           <Route path="/projetos" element={<ProjetosPesquisa />} />
           <Route path="/portfolio" element={<PortfolioAlunos />} />
@@ -44,11 +48,32 @@ function PageLayout() {
           <Route path="/sobre" element={<SobreProfessor />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/extensao-ensino-ia" element={<ExtensaoEnsinoIA />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
         </Routes>
-      </main>
-      {!hideLayout && <Footer />}
+      </div>
+      
+      <LoginModal 
+        isOpen={modal === 'login'}
+        onClose={handleCloseModal}
+        onSwitchToRegister={() => setModal('register')}
+      />
+      <RegisterModal
+        isOpen={modal === 'register'}
+        onClose={handleCloseModal}
+        onSwitchToLogin={() => setModal('login')}
+      />
     </div>
   );
 }
+
+// Componente principal App
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <AppLayout />
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
