@@ -21,6 +21,7 @@ import MapaEstudos from './pages/MapaEstudos';
 import SobreProfessor from './pages/SobreProfessor';
 import FAQ from './pages/FAQ';
 import ExtensaoEnsinoIA from './pages/ExtensaoEnsinoIA';
+import NovoPost from './pages/NovoPost';
 
 
 // Componente interno para gerenciar o layout e o estado dos modais
@@ -48,6 +49,7 @@ function AppLayout() {
           <Route path="/sobre" element={<SobreProfessor />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/extensao-ensino-ia" element={<ExtensaoEnsinoIA />} />
+          <Route path="/blog/novo" element={<NovoPost />} />
         </Routes>
       </div>
       

@@ -1,11 +1,10 @@
-// src/components/LoginModal.tsx
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSwitchToRegister: () => void; // Para ir para o modal de registro
+  onSwitchToRegister: () => void;
 }
 
 export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: LoginModalProps) {
@@ -21,7 +20,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch('/api/auth/login', { // CORRIGIDO
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -30,13 +29,14 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
       if (!response.ok || !data.token) {
         throw new Error(data.message || 'Falha no login.');
       }
-      login(data.token); // Passa o token para o AuthContext
-      onClose(); // Fecha o modal
+      login(data.token);
+      onClose();
     } catch (err: any) {
       setError(err.message);
     }
   };
 
+  // O restante do JSX continua o mesmo...
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md relative">

@@ -1,10 +1,9 @@
-// src/components/RegisterModal.tsx
 import { useState } from 'react';
 
 interface RegisterModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSwitchToLogin: () => void; // Para poder voltar ao modal de login
+  onSwitchToLogin: () => void;
 }
 
 export default function RegisterModal({ isOpen, onClose, onSwitchToLogin }: RegisterModalProps) {
@@ -21,21 +20,18 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin }: Regi
     setSuccess('');
 
     try {
-      // Faz a chamada para nossa API back-end
-      const response = await fetch('http://localhost:3001/api/auth/register', {
+      const response = await fetch('/api/auth/register', { // CORRIGIDO
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.message || 'Falha ao registrar.');
       }
 
       setSuccess('Registro bem-sucedido! Agora você pode fazer o login.');
-      // Limpa o formulário e muda para o modal de login após um tempo
       setTimeout(() => {
         onSwitchToLogin();
       }, 2000);
@@ -44,7 +40,8 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin }: Regi
       setError(err.message);
     }
   };
-
+  
+  // O restante do JSX continua o mesmo...
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md relative">
